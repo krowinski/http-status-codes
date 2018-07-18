@@ -1,0 +1,26 @@
+{
+    "name": "krowinski/http-status-codes",
+    "description": "PHP List of HTTP status codes, messages and description for them.",
+    "keywords": [
+        "php",
+        "status-codes",
+        "http",
+        "http-status-code"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kacper Rowiński",
+            "email": "kacper.rowinski@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "HttpStatusCodes\\": "src/HttpStatusCodes/"
+        }
+    }
+}
