@@ -18,9 +18,18 @@
     "require": {
         "php": ">=5.4"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8|^5.7|^6.5"
+    },
     "autoload": {
         "psr-4": {
             "HttpStatusCodes\\": "src/HttpStatusCodes/"
         }
-    }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HttpStatusCodes\\Tests\\Unit\\": "tests/Unit/"
+        }
+    },
+    "minimum-stability": "stable"
 }
