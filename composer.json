@@ -2,7 +2,6 @@
     "name": "krowinski/http-status-codes",
     "description": "PHP List of HTTP status codes, messages and description for them.",
     "keywords": [
-        "php",
         "status-codes",
         "http",
         "http-status-code"
