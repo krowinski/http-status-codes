@@ -4,6 +4,7 @@
 namespace HttpStatusCodes\Tests\Unit;
 
 use HttpStatusCodes\HttpStatusCodes;
+use OutOfRangeException;
 use PHPUnit\Framework\TestCase;
 
 class HttpStatusCodesTest extends TestCase
@@ -20,8 +21,6 @@ class HttpStatusCodesTest extends TestCase
 
     public function testHasOnValidStatusCode()
     {
-        $httpStatusCodes = HttpStatusCodes::getDescription(200);
-
         $this->assertTrue(HttpStatusCodes::has(200));
     }
 
@@ -31,7 +30,7 @@ class HttpStatusCodesTest extends TestCase
     }
 
     /**
-     * @expectedException \OutOfRangeException
+     * @expectedException OutOfRangeException
      * @expectedExceptionMessage Status code 2000 not recognised.
      */
     public function testGetDescriptionOnInvalidStatusCode()

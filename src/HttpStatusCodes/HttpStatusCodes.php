@@ -3,11 +3,16 @@
 
 namespace HttpStatusCodes;
 
+use OutOfRangeException;
+use ReflectionClass;
+use ReflectionException;
+
 /**
  * Class HttpStatusCodes
  * @package HttpStatusCodes
  * @see https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
  * @see https://github.com/waldemarnt/http-status-codes
+ * @see https://httpstatuses.com/
  */
 class HttpStatusCodes
 {
@@ -275,7 +280,7 @@ class HttpStatusCodes
     /**
      * @param int $code
      * @return string
-     * @throws \OutOfRangeException
+     * @throws OutOfRangeException
      */
     public static function getMessage($code)
     {
@@ -285,7 +290,7 @@ class HttpStatusCodes
     /**
      * @param int $code
      * @return array
-     * @throws \OutOfRangeException
+     * @throws OutOfRangeException
      */
     protected static function get($code)
     {
@@ -295,7 +300,7 @@ class HttpStatusCodes
             return self::$mapping[$code];
         }
 
-        throw new \OutOfRangeException('Status code ' . $code . ' not recognised.');
+        throw new OutOfRangeException('Status code ' . $code . ' not recognised.');
     }
 
     /**
@@ -308,8 +313,8 @@ class HttpStatusCodes
         }
 
         try {
-            $constants = (new \ReflectionClass(__CLASS__))->getConstants();
-        } catch (\ReflectionException $e) {
+            $constants = (new ReflectionClass(__CLASS__))->getConstants();
+        } catch (ReflectionException $e) {
             $constants = [];
         }
 
@@ -317,7 +322,7 @@ class HttpStatusCodes
             if (false !== strpos($name, '_CODE')) {
                 $nameCleaned = str_replace('_CODE', '', $name);
                 self::$mapping[$content] = [
-                    self::MESSAGE     => $constants[$nameCleaned . '_MESSAGE'],
+                    self::MESSAGE => $constants[$nameCleaned . '_MESSAGE'],
                     self::DESCRIPTION => $constants[$nameCleaned . '_DESCRIPTION'],
                 ];
             }
@@ -336,7 +341,7 @@ class HttpStatusCodes
     /**
      * @param int $code
      * @return string
-     * @throws \OutOfRangeException
+     * @throws OutOfRangeException
      */
     public static function getDescription($code)
     {
